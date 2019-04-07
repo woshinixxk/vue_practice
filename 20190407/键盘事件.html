@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件 - Vue</title>
+	<style>
+		#canvas{
+			width: 200px;
+			height: 200px;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<!-- 新知识 -->
+	<!-- keyup 键盘弹起事件-->
+	<!-- enter 键盘弹起事件修饰符-->
+
+	<div id="box">
+		<input type="text" v-on:keyup.enter="logName">
+		<input type="text" v-on:keyup.enter="logAge">
+	</div>
+	<script>
+		new Vue({
+			el:'#box',
+			methods:{
+				logName:function(){
+					console.log("你正在输入名字..");
+				},
+				logAge:function(){
+					console.log("你正在输入年龄..");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

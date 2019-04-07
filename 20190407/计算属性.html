@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件 - Vue</title>
+	<style>
+		#canvas{
+			width: 200px;
+			height: 200px;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<!-- 新知识 -->
+	<!-- 在vue中，使用的虚拟DOM -->
+	<!-- 把当前真实的dom拷贝一份过去，操作的是虚拟dom -->
+	<!-- 当发现虚拟dom与真实dom不同的时候，触发computed方法 -->
+
+	<div id="box"></div>
+
+	<script>
+		new Vue({
+			el:'#box',
+			data:{
+				name:"hello",
+				age:""
+			},
+			computed:{// 性能比methods更好，适合用在搜索的时候
+
+			}
+		})
+	</script>
+</body>
+</html>

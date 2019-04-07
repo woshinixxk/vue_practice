@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<style>
+		#bag{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			background: url(img/pig.png) center no-repeat;
+		}
+		#bag.burst{
+			background-image: url(img/dollar.png);
+		}
+		#bag-health{
+			width: 200px;
+			border: 2px solid #000;
+			margin: 0 auto 20px auto;
+		}
+		#bag-health div{
+			height: 20px;
+			background-color: crimson;
+		}
+		#controls{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	
+	<div id="box">
+		<!-- 显示图片 -->
+		<!-- 当血条为空时,切换图片 -->
+		<div id="bag" v-bind:class="{burst:ended}"></div>
+		
+		<!-- 进度情况 -->
+		<div id="bag-health">
+			<div v-bind:style="{width:health + '%'}"></div>
+		</div>
+
+		<!-- 控制按钮 -->
+		<div id="controls">
+			<button v-on:click="punch" v-show="!ended">使劲敲</button>
+			<button v-on:click="restart">重新开始</button>
+		</div>
+
+
+	</div>
+
+	<script>
+		new Vue({ 
+			el:'#box',
+			data:{
+				health:100,
+				ended:false
+			},
+			methods:{
+				punch:function(){
+					this.health -= 10;
+					if (this.health <= 0) {
+						this.ended = true;
+					}
+				},
+				restart:function(){
+					this.health = 100;
+					this.ended = false;
+				}
+			},
+			computed:{
+
+			}
+		})
+	</script>
+</body>
+</html>

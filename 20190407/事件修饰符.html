@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件 - Vue</title>
+	<style>
+		#canvas{
+			width: 200px;
+			height: 200px;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<!-- 新知识 -->
+	<!-- v-on:click  点击事件 -->
+	<!-- @click 跟上面一样 -->
+	<!-- @mousemove 鼠标移动事件 -->
+	<!-- stop 修饰符	 阻止事件冒泡 -->
+	<!-- prevent 修饰符	 阻止默认事件 -->
+
+	<div id="box">
+		<h1>{{name}}</h1>
+		<h1>{{age}}</h1>
+		<input v-on:click="add" type="button" value="涨一岁">
+		<input @click="subtract" type="button" value="减一岁">
+		<!-- 数据绑定才能获取相应数据 -->
+		<a v-bind:href="website">aa</a>
+		<div v-html="websiteTag"></div>
+
+		<div id="canvas" @mousemove="updateXY">
+			{{x}},{{y}} - 
+			<span @mousemove.stop="">stop Moving</span>
+		</div>
+		<a @click.prevent="" href="http://www.baidu.com">被阻止的按钮</a>
+	</div>
+	<script src="js/app.js"></script>
+</body>
+</html>

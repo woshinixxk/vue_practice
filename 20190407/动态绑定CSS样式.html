@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态绑定CSS样式</title>
+	<style>
+		span{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.changeColor span{
+			background-color: green;
+		}
+		.changeLength span{
+			width: 200px;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<!-- 新知识 -->
+	<!-- 在vue中，使用的虚拟DOM -->
+	<!-- 把当前真实的dom拷贝一份过去，操作的是虚拟dom -->
+	<!-- 当发现虚拟dom与真实dom不同的时候，触发computed方法 -->
+
+	<div id="box">
+		<h1>动态CSS class</h1>
+		
+
+		<!-- <h2 v-bind:class="{red:false}">示例1</h2> -->
+		<!-- <h2>示例1</h2>
+		<div v-bind:class="{changeColor:changeColor}">
+			点击时取反changeColor
+			<span v-on:click="{changeColor = !changeColor}">这里是span</span>
+		</div> -->
+
+		<h2>示例2</h2>
+		<div v-bind:class="compClasses">
+			<button v-on:click="changeColor = !changeColor">changeColor</button>
+			<button v-on:click="changeLength = !changeLength">changeLength</button>
+			<span></span>
+		</div>
+	</div>
+
+	<script>
+		new Vue({
+			el:'#box',
+			data:{
+				changeColor:false,
+				changeLength:false
+			},
+			methods:{
+
+			},
+			computed:{// 性能比methods更好，适合用在搜索的时候
+				compClasses:function(){
+					return { // 返回对象
+						changeColor:this.changeColor,
+						changeLength:this.changeLength
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

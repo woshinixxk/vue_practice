@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<style>
+		#bag{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			background: url(img/pig.png) center no-repeat;
+		}
+		#bag.burst{
+			background-image: url(img/dollar.png);
+		}
+		#bag-health{
+			width: 200px;
+			border: 2px solid #000;
+			margin: 0 auto 20px auto;
+		}
+		#bag-health div{
+			height: 20px;
+			background-color: crimson;
+		}
+		#controls{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<h1>实例化多个对象</h1>
+	<div id="box1">
+		<h3>{{title}}</h3>
+		<p></p>
+	</div>
+	<div id="box2">
+		<h3>{{title}}</h3>
+		<p></p>
+		<button v-on:click="changeBox1">改变第一个box1中的title</button>
+	</div>
+
+	<script>
+		var box1 = new Vue({ 
+			el:'#box1',
+			data:{
+				title:"vue one"
+			},
+			methods:{
+
+			},
+			computed:{
+				greet:function(){
+
+				}
+			}
+		})
+
+		var box2 = new Vue({ 
+			el:'#box2',
+			data:{
+				title:"vue two"
+			},
+			methods:{
+				changeBox1:function(){
+					box1.title = "已经被修改了!!";
+				}
+			},
+			computed:{
+				greet:function(){
+
+				}
+			}
+		})
+	</script>
+</body>
+</html>

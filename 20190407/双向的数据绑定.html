@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件 - Vue</title>
+	<style>
+		#canvas{
+			width: 200px;
+			height: 200px;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<!-- 新知识 -->
+	<!-- ref 标记标签,便于js中获取元素-->
+
+	<div id="box">
+		<h1> 双向数据绑定 / input / select / textarea</h1>
+		<label>姓名</label>
+		<!-- <input ref="name" type="text" @keyup="printName"> -->
+		<input ref="name" type="text" v-model="name">
+		<span>{{name}}</span>
+		<label>年龄</label>
+		<!-- <input ref="age" type="text" @keyup="printAge"> -->
+		<!-- v-model="age" 是vue2.0中的数据双向绑定的指令，后面的age是data里的属性-->
+		<input ref="age" type="text" v-model="age">
+		<span>{{age}}</span>
+
+	</div>
+
+
+	<script>
+		new Vue({
+			el:'#box',
+			data:{
+				name:"hello",
+				age:""
+			},
+			methods:{
+				printName:function(){
+					this.name = this.$refs.name.value;
+				},
+				printAge:function(){
+					this.age = this.$refs.age.value;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

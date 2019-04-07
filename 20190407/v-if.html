@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="box">
+		<h1>v - if 条件</h1>
+		<button v-on:click="{error = !error}">changError</button>
+		<button v-on:click="{success = !success}">changSuccess</button>
+		<!-- 判断如果error为true,则显示错误信息 如果为真，则P标签存在，否则不存在，直接消失-->
+		<!-- 下面两者只能有一个 -->
+		<!-- <p v-if="error">错误404</p>
+		<p v-else-if="success">成功连接200</p> -->
+
+		
+		<!-- 跟v-if的区别是，不会消失，隐藏了并占位 -->
+		<p v-show="error">错误404</p>
+		<p v-show="success">成功连接200</p>
+	</div>
+	<script>
+		new Vue({ 
+			el:'#box',
+			data:{// 默认无错
+				error:false,
+				success:false
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>

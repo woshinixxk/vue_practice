@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="box">
+		<h1>v - for</h1>
+		<ul>
+			<li v-for="character in characters">{{character}}</li>
+		</ul>
+		<ul>
+			<li v-for="(user,index) in users">{{index + 1}}. {{user.name}} - {{user.age}}</li>
+		</ul>
+	
+		<!-- 为什么不用div循环呢？ -->
+		<!-- 用template在循环时不会渲染多余的元素，只生成需要的元素，提高性能 -->
+		<template v-for="(user,index) in users">
+			<h3>{{index + 1}} - {{user.name}}</h3>
+			<span>{{user.age}}</span>
+		</template>
+
+	</div>
+	<script>
+		new Vue({ 
+			el:'#box',
+			data:{
+				characters:['zs','ls','ww'],
+				users:[
+					{name:'xx',age:18},
+					{name:'xx2',age:20},
+					{name:'xx3',age:25}
+				],
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
